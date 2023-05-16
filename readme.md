@@ -24,9 +24,9 @@ https://github.com/bachelorTelenor/DemoSetup
 
 <img src="img/gitClone.png" width=500>
 
-Go to the GitHub page and press the green button at the top of the page that says ```Code```. Press ```Download ZIP``` to get a ZIP file container all the files. Extract the all the files in the ZIP to a folder called ```DemoSetup```.
+Go to the GitHub page and press the green button at the top of the page that says ```Code```. Press ```Download ZIP``` to get a ZIP file container all the files. Extract the the ZIP file to get a directory called ```DemoSetup-master```.
 
-Open a command line interface like Terminal, CMD or PowerShell. Navigate to the ```DemoSetup``` directory. All commands in this guide will be run from this location. 
+Open a command line interface like Terminal, CMD or PowerShell. Navigate to the ```DemoSetup-master``` directory. All commands in this guide will be run from this location. 
 
 ### Increase the virtual memory limit
 
@@ -66,7 +66,7 @@ Make sure Elasticsearch and Kibana is done with the setup before continuing. Go 
 ### Get Elasticsearch certificate
 Get the http certificate from the Elasticsearch container by running:
 ```docker
-docker cp demosetup-es01-1:/usr/share/elasticsearch/config/certs/ca/ca.crt .
+docker cp demosetup-master-es01-1:/usr/share/elasticsearch/config/certs/ca/ca.crt .
 ```
 If the container is not called ```demosetup-es01-1``` run ```docker ps``` and use the name of your Elasticsearch container instead.
 
