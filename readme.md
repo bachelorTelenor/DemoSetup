@@ -20,7 +20,13 @@ docker compose version
 
 ## Installation
 ### Get the installation files from Github
-!!!!! Legg til instuksjoner på å hente ned fra github her når det er lastet opp på github
+https://github.com/bachelorTelenor/DemoSetup
+
+<img src="img/gitClone.png" width=500>
+
+Go to the GitHub page and press the green button at the top of the page that says ```Code```. Press ```Download ZIP``` to get a ZIP file container all the files. Extract the all the files in the ZIP to a folder called ```DemoSetup```.
+
+Open a command line interface like Terminal, CMD or PowerShell. Navigate to the ```DemoSetup``` directory. All commands in this guide will be run from this location. 
 
 ### Increase the virtual memory limit
 
@@ -45,10 +51,9 @@ The container will start and begin setting up Elasticsearch and Kibana. This mig
 ```docker
 docker ps
 ```
-This should show two containers running.
+This should show two containers running. They should be called ```demosetup-kibana-1``` and ```demosetup-es01-1```. 
 
 ### Install Python libraries
-Open a command line interface like Terminal, CMD or PowerShell. Navigate to the directory with the installation files from GitHub. All commands will be run from this location. 
 
 Install the required libraries by running: 
 ```py
@@ -61,8 +66,9 @@ Make sure Elasticsearch and Kibana is done with the setup before continuing. Go 
 ### Get Elasticsearch certificate
 Get the http certificate from the Elasticsearch container by running:
 ```docker
-docker cp demooppsett-es01-1:/usr/share/elasticsearch/config/certs/ca/ca.crt .
+docker cp demosetup-es01-1:/usr/share/elasticsearch/config/certs/ca/ca.crt .
 ```
+If the container is not called ```demosetup-es01-1``` run ```docker ps``` and use the name of your Elasticsearch container instead.
 
 ### Run the setup script
 ```py
@@ -77,3 +83,13 @@ User: ``elastic``
 Pass: ``demodemo``
 
 Navigate to the dashboard uning the hamburger menu in the top left. Click ``Dashboard`` under ``Analytics``. Click the dashboard called ``All Tests``.
+
+### Stop docker containers
+To stop the docker containers run:
+```docker
+docker compose down
+```
+If you want to remove the volumes and images used by the container, run this instead:
+```docker
+docker compose down -v --rmi all
+```
